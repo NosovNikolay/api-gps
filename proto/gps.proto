@@ -1,0 +1,16 @@
+syntax="proto3";
+
+package GPS;
+
+service AppController {
+  rpc safeGPSData (Req) returns (Res);
+}
+
+message Req {
+  string data = 1;
+}
+
+message Res {
+  string x = 1;
+  string y = 2;
+}
