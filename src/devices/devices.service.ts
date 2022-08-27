@@ -14,6 +14,11 @@ export class DevicesService {
         return device;
     }
 
+    async getDeviceBySerial(serialNum: string) {
+        const device = await this.deviceRepository.findOne({where: {serialNum}});
+        return device;
+    }
+
     async
 
 }
