@@ -1,4 +1,4 @@
-import {Body, Controller, Post, UsePipes} from '@nestjs/common';
+import {Body, Controller, Post} from '@nestjs/common';
 import {ApiTags} from "@nestjs/swagger";
 import {CreateDeviceDto} from "../devices/dto/create-device.dto";
 import {AuthService} from "./auth.service";
@@ -11,12 +11,12 @@ export class AuthController {
     }
 
     @Post('login')
-    login (@Body() deviceDto: CreateDeviceDto) {
+    login(@Body() deviceDto: CreateDeviceDto) {
         return this.authService.login(deviceDto)
     }
 
     @Post('registration')
-    registration (@Body() deviceDto: CreateDeviceDto) {
+    registration(@Body() deviceDto: CreateDeviceDto) {
         return this.authService.registration(deviceDto)
     }
 

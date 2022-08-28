@@ -14,8 +14,6 @@ export type saveRes = {
 export type DataCreationAttr = {
     gpsData: string;
     deviceId: number
-
-
 }
 
 export type DataArray = {
@@ -40,6 +38,3 @@ export type GPS = {
     type: string;
     createdAt: Date;
 }
-
-
-

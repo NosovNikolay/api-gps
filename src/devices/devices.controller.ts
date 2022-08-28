@@ -1,6 +1,6 @@
-import { Controller, Get, UseGuards, Param} from '@nestjs/common';
-import {DevicesService} from "./devices.service";
+import {Controller, Get, UseGuards, Param} from '@nestjs/common';
 import {ApiOperation, ApiResponse, ApiTags} from "@nestjs/swagger";
+import {DevicesService} from "./devices.service";
 import {Device} from "./devices.model";
 import {JwtAuthGuard} from "../auth/jwt-auth-guard";
 

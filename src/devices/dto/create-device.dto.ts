@@ -1,5 +1,6 @@
 import {ApiProperty} from "@nestjs/swagger";
 import {IsString, Length} from "class-validator";
+
 export class CreateDeviceDto {
     @ApiProperty({example: 'DU182993FK', description: 'Serial device number'})
     @IsString({message: 'Should be string'})

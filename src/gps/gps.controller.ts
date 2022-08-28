@@ -1,6 +1,6 @@
 import {Body, Controller, Get, Post, Param, UseGuards} from '@nestjs/common';
 import {Observable} from "rxjs";
-import {DataArray, DataCreationAttr, GPS, saveRes,} from "./GPSService";
+import {DataArray, DataCreationAttr, saveRes,} from "./GPSService";
 import {GpsService} from "./gps.service";
 import {JwtAuthGuard} from "../auth/jwt-auth-guard";
 import {DevicesService} from "../devices/devices.service";
@@ -8,7 +8,8 @@ import {DevicesService} from "../devices/devices.service";
 @Controller('gps')
 export class GpsController {
     constructor(private readonly gpsService: GpsService,
-                private readonly devicesService: DevicesService) {}
+                private readonly devicesService: DevicesService) {
+    }
 
     @Post('/saveData')
     @UseGuards(JwtAuthGuard)
@@ -22,7 +23,7 @@ export class GpsController {
         let device = await this.devicesService.getDeviceBySerial(params.serialNum);
         let gpsData = null;
         if (device)
-            gpsData = await this.gpsService.getGpsData({ deviceId: device.id})
+            gpsData = await this.gpsService.getGpsData({deviceId: device.id})
         return gpsData;
     }
 }

@@ -1,8 +1,8 @@
 import {HttpException, HttpStatus, Injectable, UnauthorizedException} from '@nestjs/common';
-import {CreateDeviceDto} from "../devices/dto/create-device.dto";
-import {DevicesService} from "../devices/devices.service";
 import {JwtService} from "@nestjs/jwt";
 import * as bcrypt from "bcryptjs"
+import {CreateDeviceDto} from "../devices/dto/create-device.dto";
+import {DevicesService} from "../devices/devices.service";
 import {Device} from "../devices/devices.model";
 
 @Injectable()
@@ -12,12 +12,12 @@ export class AuthService {
                 private jwtService: JwtService) {
     }
 
-    async login( deviceDto: CreateDeviceDto) {
+    async login(deviceDto: CreateDeviceDto) {
         const device = await this.validateDevice(deviceDto);
         return this.generateToken(device);
     }
 
-    async registration (deviceDto: CreateDeviceDto) {
+    async registration(deviceDto: CreateDeviceDto) {
         const candidate = await this.deviceService.getDeviceBySerial(deviceDto.serialNum);
         if (candidate)
             throw new HttpException('Device already exist', HttpStatus.BAD_REQUEST);
@@ -39,6 +39,7 @@ export class AuthService {
         const passwordEquals = await bcrypt.compare(deviceDto.password, device?.password || '');
         if (device && passwordEquals)
             return device;
-        throw new UnauthorizedException({status: 400,message: 'Wrong serial or password'});
- ;   }
+        throw new UnauthorizedException({status: 400, message: 'Wrong serial or password'});
+        ;
+    }
 }

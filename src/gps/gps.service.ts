@@ -4,10 +4,11 @@ import {Observable} from "rxjs";
 import {GPSService, DataCreationAttr, GPS, saveRes, DataArray} from "./GPSService";
 
 @Injectable()
-export class GpsService implements OnModuleInit{
+export class GpsService implements OnModuleInit {
     private GPSService: GPSService;
 
-    constructor(@Inject('GPS') private readonly client: ClientGrpc) {}
+    constructor(@Inject('GPS') private readonly client: ClientGrpc) {
+    }
 
     onModuleInit(): any {
         this.GPSService = this.client.getService<GPSService>('GpsController');

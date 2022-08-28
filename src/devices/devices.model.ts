@@ -5,6 +5,7 @@ interface DeviceCreationAtts {
     serialNum: string;
     password: string;
 }
+
 @Table({tableName: 'devices'})
 export class Device extends Model<Device, DeviceCreationAtts> {
     @ApiProperty({example: '1', description: 'Unique id'})
