@@ -10,12 +10,13 @@ export class GpsService implements OnModuleInit{
     constructor(@Inject('GPS') private readonly client: ClientGrpc) {}
 
     onModuleInit(): any {
-        this.GPSService = this.client.getService<GPSService>('AppController');
+        console.log(this.client.getService<GPSService>('GpsController'))
+        this.GPSService = this.client.getService<GPSService>('GpsController');
     }
 
     getNum(): Observable<Res> {
         return this.GPSService.safeGPSData({
-            data: '123'
+            data: "$GPGGA,224900.000,4832.3762,N,00903.5393,E,1,04,7.8,498.6,M,48.0,M,,0000*5E"
         })
     }
 }
