@@ -2,15 +2,40 @@ syntax="proto3";
 
 package GPS;
 
-service AppController {
-  rpc safeGPSData (Req) returns (Res);
+import "google/protobuf/timestamp.proto";
+
+service GpsController {
+  rpc saveGPSData (GPSDataCreationAttr) returns (GPSData);
+  rpc getGPSData (DeviceId) returns (GpsDataArray);
 }
 
-message Req {
-  string data = 1;
+message GPSDataCreationAttr {
+  string gpsData = 1;
+  int32 deviceId = 2;
 }
 
-message Res {
-  string x = 1;
-  string y = 2;
+message GPSData {
+  int32 id = 1;
+  int32 deviceId = 2;
+  float lat = 3;
+  float lon = 4;
+  float alt = 5;
+  string quality = 6;
+  int32 satellites = 7;
+  float hdop = 8;
+  int32 geoidal = 9;
+  int32 age = 10;
+  int32 stationID = 11;
+  string raw = 12;
+  string type = 13;
+  google.protobuf.Timestamp createdAt = 14;
 }
+
+message DeviceId {
+  int32 deviceId = 1;
+}
+
+message GpsDataArray {
+  repeated GPSData data = 1;
+}
+
