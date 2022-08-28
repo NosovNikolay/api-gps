@@ -19,4 +19,5 @@ export class DevicesService {
         return device;
     }
 
+
 }

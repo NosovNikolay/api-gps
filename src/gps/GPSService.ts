@@ -1,8 +1,14 @@
 import {Observable} from "rxjs";
 
 export interface GPSService {
-    saveGPSData(string: DataCreationAttr): Observable<{data: GPS}>
+    saveGPSData(string: DataCreationAttr): Observable<saveRes>
     getGPSData(string: { deviceId: number }): Observable<{data: GPS[]}>
+}
+
+export type saveRes = {
+    data: string;
+    error: string;
+    status: number;
 }
 
 export type DataCreationAttr = {

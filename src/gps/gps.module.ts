@@ -4,12 +4,14 @@ import { GpsController } from './gps.controller';
 import { ClientsModule, Transport } from "@nestjs/microservices";
 import { join } from "path";
 import {AuthModule} from "../auth/auth.module";
+import {DevicesModule} from "../devices/devices.module";
 
 @Module({
   providers: [GpsService],
   controllers: [GpsController],
   imports: [
     forwardRef(() => AuthModule),
+    forwardRef(() => DevicesModule),
     ClientsModule.register([
       {
         name: 'GPS',
