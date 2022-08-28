@@ -10,13 +10,13 @@ import {JwtAuthGuard} from "../auth/jwt-auth-guard";
 export class DevicesController {
     constructor(private devicesService: DevicesService) {
     }
+
     @ApiOperation({summary: 'Creating new GPS device'})
     @ApiResponse({status: 200, type: Device})
     @Post('')
     create(@Body() deviceDto: CreateDeviceDto) {
         return this.devicesService.createDevice(deviceDto)
     }
-
 
     @UseGuards(JwtAuthGuard)
     @Get('/test')
