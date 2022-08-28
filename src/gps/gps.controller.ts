@@ -1,6 +1,6 @@
 import {Body, Controller, Get, Post, Param, UseGuards} from '@nestjs/common';
 import {Observable} from "rxjs";
-import {DataCreationAttr, GPS, saveRes,} from "./GPSService";
+import {DataArray, DataCreationAttr, GPS, saveRes,} from "./GPSService";
 import {GpsService} from "./gps.service";
 import {JwtAuthGuard} from "../auth/jwt-auth-guard";
 import {DevicesService} from "../devices/devices.service";
@@ -18,7 +18,7 @@ export class GpsController {
 
     @Get('/getData/:serialNum')
     @UseGuards(JwtAuthGuard)
-    async getGPSData(@Param() params: { serialNum: string }): Promise<Observable<{ data: GPS[]}>> {
+    async getGPSData(@Param() params: { serialNum: string }): Promise<Observable<DataArray>> {
         let device = await this.devicesService.getDeviceBySerial(params.serialNum);
         let gpsData = null;
         if (device)

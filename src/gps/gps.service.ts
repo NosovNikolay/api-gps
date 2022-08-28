@@ -1,7 +1,7 @@
 import {Inject, Injectable, OnModuleInit} from '@nestjs/common';
 import {ClientGrpc} from "@nestjs/microservices";
 import {Observable} from "rxjs";
-import {GPSService, DataCreationAttr, GPS, saveRes} from "./GPSService";
+import {GPSService, DataCreationAttr, GPS, saveRes, DataArray} from "./GPSService";
 
 @Injectable()
 export class GpsService implements OnModuleInit{
@@ -17,7 +17,7 @@ export class GpsService implements OnModuleInit{
         return this.GPSService.saveGPSData(gps)
     }
 
-    getGpsData(gps: { deviceId: number }): Observable<{data: GPS[]}> {
+    getGpsData(gps: { deviceId: number }): Observable<DataArray> {
         return this.GPSService.getGPSData(gps)
     }
 }
