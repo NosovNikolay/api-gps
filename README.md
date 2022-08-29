@@ -26,6 +26,12 @@
 
 [Nest](https://github.com/nestjs/nest) GPS Gateway
 
+## Run Docker
+
+```bash
+$ docker-compose build && docker-compose up
+```
+
 ## Installation
 
 ```bash
