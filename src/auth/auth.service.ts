@@ -24,7 +24,10 @@ export class AuthService {
 
         const hashPassword = await bcrypt.hash(deviceDto.password, 10);
         const device = await this.deviceService.createDevice({...deviceDto, password: hashPassword});
-        return this.generateToken(device);
+        return {
+            status: HttpStatus.OK,
+            token: this.generateToken(device)
+        };
     }
 
     private async generateToken(device: Device) {
@@ -40,6 +43,5 @@ export class AuthService {
         if (device && passwordEquals)
             return device;
         throw new UnauthorizedException({status: 400, message: 'Wrong serial or password'});
-        ;
     }
 }
