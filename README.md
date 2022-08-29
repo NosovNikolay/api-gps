@@ -36,6 +36,18 @@
 $ docker-compose build && docker-compose up
 ```
 
+
+## .env example
+
+```dotenv
+PORT=8080
+POSTGRES_HOST=localhost/postgress(for docker)
+POSTGRES_PORT=5432
+POSTGRES_USER=postgress
+POSTGRES_PASSWORD=root
+POSTGRES_DB=gps
+```
+
 ## Installation
 
 ```bash
