@@ -26,6 +26,10 @@
 
 [Nest](https://github.com/nestjs/nest) GPS Gateway
 
+## Documentation
+
+[Documentation](http://localhost:8080/docs) GPS Gateway (run the server)
+
 ## Run Docker
 
 ```bash
