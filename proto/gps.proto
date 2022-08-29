@@ -1,17 +1,23 @@
-syntax="proto3";
+syntax = "proto3";
 
 package GPS;
 
 import "google/protobuf/timestamp.proto";
 
 service GpsController {
-  rpc saveGPSData (GPSDataCreationAttr) returns (GPSData);
+  rpc saveGPSData (GPSDataCreationAttr) returns (saveDataRes);
   rpc getGPSData (DeviceId) returns (GpsDataArray);
 }
 
 message GPSDataCreationAttr {
   string gpsData = 1;
   int32 deviceId = 2;
+}
+
+message saveDataRes {
+  GPSData data = 1;
+  repeated string error = 2;
+  int32 status = 3;
 }
 
 message GPSData {
@@ -37,5 +43,8 @@ message DeviceId {
 
 message GpsDataArray {
   repeated GPSData data = 1;
+  repeated string error = 2;
+  int32 status = 3;
 }
+
 

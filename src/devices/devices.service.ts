@@ -1,11 +1,10 @@
-import { Injectable } from '@nestjs/common';
-import {Device} from "./devices.model";
+import {Injectable} from '@nestjs/common';
 import {InjectModel} from "@nestjs/sequelize";
+import {Device} from "./devices.model";
 import {CreateDeviceDto} from "./dto/create-device.dto";
 
 @Injectable()
 export class DevicesService {
-
     constructor(@InjectModel(Device) private deviceRepository: typeof Device) {
     }
 
@@ -18,5 +17,4 @@ export class DevicesService {
         const device = await this.deviceRepository.findOne({where: {serialNum}});
         return device;
     }
-
 }

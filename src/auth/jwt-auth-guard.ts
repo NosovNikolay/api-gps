@@ -7,6 +7,7 @@ export class JwtAuthGuard implements CanActivate {
 
     constructor(private jwtService: JwtService) {
     }
+
     canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
         const req = context.switchToHttp().getRequest();
 
@@ -16,14 +17,14 @@ export class JwtAuthGuard implements CanActivate {
             const token = authHeader.split(' ')[1]
 
             if (bearer !== 'Bearer' || !token) {
-                throw new UnauthorizedException({ status: 403, message: 'Unauthorized'});
+                throw new UnauthorizedException({status: 403, message: 'Unauthorized'});
             }
 
             const device = this.jwtService.verify(token);
             req.device = device
             return true;
         } catch (e) {
-            throw new UnauthorizedException({ status: 403, message: 'Unauthorized'});
+            throw new UnauthorizedException({status: 403, message: 'Unauthorized'});
         }
 
     }
