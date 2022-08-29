@@ -1,3 +1,8 @@
+// Move to another gitHub repo
+// git submodule add --> link
+// git submodule init && git submodule update
+
+
 syntax = "proto3";
 
 package GPS;
